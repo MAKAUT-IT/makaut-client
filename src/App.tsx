@@ -7,6 +7,7 @@ import DashboardPage from './pages/DashboardPage';
 import NoticesPage from './pages/NoticesPage';
 import StudentListPage from './pages/StudentListPage';
 import AnnouncementPage from './pages/AnnouncementPage';
+import CoursesPage from './pages/CoursesPage';
 import MainLayout from './layouts/MainLayout';
 import { useAuthStore } from './store/authStore';
 
@@ -41,6 +42,7 @@ function App() {
           <Route path="notices" element={<NoticesPage />} />
           <Route path="students" element={<StudentListPage />} />
           <Route path="announcements" element={<AnnouncementPage />} />
+          <Route path="courses" element={<CoursesPage />} />
         </Route>
       </Routes>
     </Router>
