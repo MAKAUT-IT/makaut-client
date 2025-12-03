@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BookOpen,
   Download,
@@ -7,7 +7,6 @@ import {
   Calendar,
   FileText,
 } from "lucide-react";
-import axios from "axios";
 
 interface Department {
   id: number;
@@ -33,8 +32,6 @@ interface Syllabus {
   fileUrl: string;
 }
 
-const API_BASE_URL = "http://localhost:3000/api"; // Update with your server URL
-
 export default function SyllabusPage() {
   const [departments, setDepartments] = useState<Department[]>([]);
   const [batches, setBatches] = useState<Batch[]>([]);
@@ -45,140 +42,120 @@ export default function SyllabusPage() {
   const [selectedBatch, setSelectedBatch] = useState<string>("");
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string>("");
 
-  // Fetch data from backend
+  // Simulate fetching data from backend
   useEffect(() => {
     fetchInitialData();
   }, []);
 
   const fetchInitialData = async () => {
     setLoading(true);
-    setError("");
 
-    try {
-      // Replace with your actual backend endpoints
-      const [deptRes, batchRes, syllabusRes] = await Promise.all([
-        axios.get<Department[]>(`${API_BASE_URL}/departments`),
-        axios.get<Batch[]>(`${API_BASE_URL}/batches`),
-        axios.get<Syllabus[]>(`${API_BASE_URL}/syllabus`),
-      ]);
+    // Simulated API call - Replace with actual backend endpoints
+    setTimeout(() => {
+      // Mock departments data
+      const deptData = [
+        { id: 1, name: "Computer Science", code: "CS" },
+        { id: 2, name: "Mechanical Engineering", code: "ME" },
+        { id: 3, name: "Electrical Engineering", code: "EE" },
+        { id: 4, name: "Civil Engineering", code: "CE" },
+      ];
 
-      setDepartments(deptRes.data);
-      setBatches(batchRes.data);
-      setSyllabusData(syllabusRes.data);
-      setFilteredSyllabus(syllabusRes.data);
-    } catch (err) {
-      console.error("Error fetching data:", err);
-      setError("Failed to load data. Please try again later.");
+      // Mock batches data
+      const batchData = [
+        { id: 1, year: "2024-2025", semester: "Fall" },
+        { id: 2, year: "2024-2025", semester: "Spring" },
+        { id: 3, year: "2023-2024", semester: "Fall" },
+        { id: 4, year: "2023-2024", semester: "Spring" },
+      ];
 
-      // Fallback to mock data for development
-      loadMockData();
-    } finally {
+      // Mock syllabus data
+      const syllabusItems = [
+        {
+          id: 1,
+          deptId: 1,
+          batchId: 1,
+          courseName: "Data Structures & Algorithms",
+          courseCode: "CS301",
+          credits: 4,
+          instructor: "Dr. Smith",
+          uploadDate: "2024-08-15",
+          fileUrl: "#",
+        },
+        {
+          id: 2,
+          deptId: 1,
+          batchId: 1,
+          courseName: "Database Management Systems",
+          courseCode: "CS302",
+          credits: 3,
+          instructor: "Prof. Johnson",
+          uploadDate: "2024-08-16",
+          fileUrl: "#",
+        },
+        {
+          id: 3,
+          deptId: 1,
+          batchId: 2,
+          courseName: "Machine Learning",
+          courseCode: "CS401",
+          credits: 4,
+          instructor: "Dr. Williams",
+          uploadDate: "2024-01-10",
+          fileUrl: "#",
+        },
+        {
+          id: 4,
+          deptId: 2,
+          batchId: 1,
+          courseName: "Thermodynamics",
+          courseCode: "ME201",
+          credits: 3,
+          instructor: "Dr. Brown",
+          uploadDate: "2024-08-14",
+          fileUrl: "#",
+        },
+        {
+          id: 5,
+          deptId: 2,
+          batchId: 1,
+          courseName: "Fluid Mechanics",
+          courseCode: "ME202",
+          credits: 4,
+          instructor: "Prof. Davis",
+          uploadDate: "2024-08-17",
+          fileUrl: "#",
+        },
+        {
+          id: 6,
+          deptId: 3,
+          batchId: 1,
+          courseName: "Circuit Analysis",
+          courseCode: "EE301",
+          credits: 3,
+          instructor: "Dr. Miller",
+          uploadDate: "2024-08-18",
+          fileUrl: "#",
+        },
+        {
+          id: 7,
+          deptId: 4,
+          batchId: 2,
+          courseName: "Structural Engineering",
+          courseCode: "CE401",
+          credits: 4,
+          instructor: "Prof. Wilson",
+          uploadDate: "2024-01-12",
+          fileUrl: "#",
+        },
+      ];
+
+      setDepartments(deptData);
+      setBatches(batchData);
+      setSyllabusData(syllabusItems);
+      setFilteredSyllabus(syllabusItems);
       setLoading(false);
-    }
-  };
-
-  // Mock data for development/testing
-  const loadMockData = () => {
-    const deptData: Department[] = [
-      { id: 1, name: "Computer Science", code: "CS" },
-      { id: 2, name: "Mechanical Engineering", code: "ME" },
-      { id: 3, name: "Electrical Engineering", code: "EE" },
-      { id: 4, name: "Civil Engineering", code: "CE" },
-    ];
-
-    const batchData: Batch[] = [
-      { id: 1, year: "2024-2025", semester: "Fall" },
-      { id: 2, year: "2024-2025", semester: "Spring" },
-      { id: 3, year: "2023-2024", semester: "Fall" },
-      { id: 4, year: "2023-2024", semester: "Spring" },
-    ];
-
-    const syllabusItems: Syllabus[] = [
-      {
-        id: 1,
-        deptId: 1,
-        batchId: 1,
-        courseName: "Data Structures & Algorithms",
-        courseCode: "CS301",
-        credits: 4,
-        instructor: "Dr. Smith",
-        uploadDate: "2024-08-15",
-        fileUrl: "#",
-      },
-      {
-        id: 2,
-        deptId: 1,
-        batchId: 1,
-        courseName: "Database Management Systems",
-        courseCode: "CS302",
-        credits: 3,
-        instructor: "Prof. Johnson",
-        uploadDate: "2024-08-16",
-        fileUrl: "#",
-      },
-      {
-        id: 3,
-        deptId: 1,
-        batchId: 2,
-        courseName: "Machine Learning",
-        courseCode: "CS401",
-        credits: 4,
-        instructor: "Dr. Williams",
-        uploadDate: "2024-01-10",
-        fileUrl: "#",
-      },
-      {
-        id: 4,
-        deptId: 2,
-        batchId: 1,
-        courseName: "Thermodynamics",
-        courseCode: "ME201",
-        credits: 3,
-        instructor: "Dr. Brown",
-        uploadDate: "2024-08-14",
-        fileUrl: "#",
-      },
-      {
-        id: 5,
-        deptId: 2,
-        batchId: 1,
-        courseName: "Fluid Mechanics",
-        courseCode: "ME202",
-        credits: 4,
-        instructor: "Prof. Davis",
-        uploadDate: "2024-08-17",
-        fileUrl: "#",
-      },
-      {
-        id: 6,
-        deptId: 3,
-        batchId: 1,
-        courseName: "Circuit Analysis",
-        courseCode: "EE301",
-        credits: 3,
-        instructor: "Dr. Miller",
-        uploadDate: "2024-08-18",
-        fileUrl: "#",
-      },
-      {
-        id: 7,
-        deptId: 4,
-        batchId: 2,
-        courseName: "Structural Engineering",
-        courseCode: "CE401",
-        credits: 4,
-        instructor: "Prof. Wilson",
-        uploadDate: "2024-01-12",
-        fileUrl: "#",
-      },
-    ];
-
-    setDepartments(deptData);
-    setBatches(batchData);
-    setSyllabusData(syllabusItems);
-    setFilteredSyllabus(syllabusItems);
+    }, 1000);
   };
 
   // Filter syllabus based on selected department and batch
@@ -223,24 +200,9 @@ export default function SyllabusPage() {
     return batch ? `${batch.year} - ${batch.semester}` : "";
   };
 
-  const handleDownload = async (syllabus: Syllabus): Promise<void> => {
-    try {
-      // Implement actual download logic
-      const response = await axios.get(syllabus.fileUrl, {
-        responseType: "blob",
-      });
-
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", `${syllabus.courseCode}_syllabus.pdf`);
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-    } catch (err) {
-      console.error("Download error:", err);
-      alert(`Unable to download syllabus for ${syllabus.courseName}`);
-    }
+  const handleDownload = (syllabus: Syllabus): void => {
+    alert(`Downloading syllabus for ${syllabus.courseName}`);
+    // Implement actual download logic here
   };
 
   const resetFilters = () => {
@@ -273,13 +235,6 @@ export default function SyllabusPage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Error Message */}
-        {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
-            {error}
-          </div>
-        )}
-
         {/* Filters Section */}
         <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
           <div className="flex items-center space-x-2 mb-4">
