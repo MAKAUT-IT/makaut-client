@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
+import Galary from './pages/Gallery';  // <-- IMPORT GALLERY PAGE
 import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
 import NoticesPage from './pages/NoticesPage';
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+
         <Route
           path="/"
           element={
@@ -27,6 +29,11 @@ function App() {
           }
         >
           <Route index element={<Navigate to="/dashboard" />} />
+          <Route index element={<Navigate to="/Galary" />} />
+
+          {/* ✅ Your new gallery route here */}
+          <Route path="Gallery" element={<Galary/>} />
+
           <Route path="dashboard" element={<DashboardPage />} />
           <Route path="notices" element={<NoticesPage />} />
         </Route>
