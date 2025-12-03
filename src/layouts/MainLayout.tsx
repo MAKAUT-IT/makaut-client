@@ -58,6 +58,18 @@ export default function MainLayout() {
                     >
                         Gallery
                     </Link>
+                    <Link
+                        to="/students"
+                        className="block px-6 py-3 text-black hover:bg-gray-100 border-l-4 border-transparent hover:border-black transition-all"
+                    >
+                        Students
+                    </Link>
+                    <Link
+                        to="/announcements"
+                        className="block px-6 py-3 text-black hover:bg-gray-100 border-l-4 border-transparent hover:border-black transition-all"
+                    >
+                        Announcements
+                    </Link>
                 </nav>
             </aside>
 

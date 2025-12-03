@@ -5,6 +5,8 @@ import Galary from './pages/Gallery';  // <-- IMPORT GALLERY PAGE
 import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
 import NoticesPage from './pages/NoticesPage';
+import StudentListPage from './pages/StudentListPage';
+import AnnouncementPage from './pages/AnnouncementPage';
 import MainLayout from './layouts/MainLayout';
 import { useAuthStore } from './store/authStore';
 
@@ -30,12 +32,15 @@ function App() {
         >
           <Route index element={<Navigate to="/dashboard" />} />
           <Route index element={<Navigate to="/Galary" />} />
+          
 
           {/* ✅ Your new gallery route here */}
           <Route path="Gallery" element={<Galary/>} />
 
           <Route path="dashboard" element={<DashboardPage />} />
           <Route path="notices" element={<NoticesPage />} />
+          <Route path="students" element={<StudentListPage />} />
+          <Route path="announcements" element={<AnnouncementPage />} />
         </Route>
       </Routes>
     </Router>

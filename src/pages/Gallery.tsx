@@ -20,7 +20,7 @@ type Photo = {
 
 export default function Gallery() {
   // Change apiBaseUrl if your API lives at a different path
-  const apiBaseUrl = "http://localhost:5000/api";
+  const apiBaseUrl = "http://localhost:3000/api";
 
   const [albums, setAlbums] = useState<Album[]>([]);
   const [photos, setPhotos] = useState<Photo[]>([]);
