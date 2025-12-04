@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
-import Galary from './pages/Gallery';  // <-- IMPORT GALLERY PAGE
+import Galary from './pages/Gallery';
 import RegisterPage from './pages/RegisterPage';
+import ContactPage from './pages/ContactPage';
 import DashboardPage from './pages/DashboardPage';
 import NoticesPage from './pages/NoticesPage';
 import StudentListPage from './pages/StudentListPage';
@@ -42,25 +44,23 @@ function App() {
   return (
     <Router>
       <Routes>
+        {/* Public Routes */}
+        <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/contact" element={<ContactPage />} />
 
+        {/* Protected Routes */}
         <Route
-          path="/"
+          path="/dashboard"
           element={
             <ProtectedRoute>
               <MainLayout />
             </ProtectedRoute>
           }
         >
-          <Route index element={<Navigate to="/dashboard" />} />
-          <Route index element={<Navigate to="/Galary" />} />
-          
-
-          {/* ✅ Your new gallery route here */}
-          <Route path="Gallery" element={<Galary/>} />
-
-          <Route path="dashboard" element={<DashboardPage />} />
+          <Route index element={<DashboardPage />} />
+          <Route path="gallery" element={<Galary />} />
           <Route path="notices" element={<NoticesPage />} />
           <Route path="students" element={<StudentListPage />} />
           <Route path="announcements" element={<AnnouncementPage />} />

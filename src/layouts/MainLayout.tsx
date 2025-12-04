@@ -17,7 +17,7 @@ export default function MainLayout() {
 
     const handleLogout = () => {
         logout();
-        navigate('/login');
+        navigate('/');
     };
 
     return (
@@ -35,55 +35,49 @@ export default function MainLayout() {
                         Dashboard
                     </Link>
                     <Link
-                        to="/notices"
+                        to="/dashboard/notices"
                         className="block px-6 py-3 text-black hover:bg-gray-100 border-l-4 border-transparent hover:border-black transition-all"
                     >
                         Notices
                     </Link>
                     <Link
-                        to="/faculty"
+                        to="/dashboard/faculty"
                         className="block px-6 py-3 text-black hover:bg-gray-100 border-l-4 border-transparent hover:border-black transition-all"
                     >
                         Faculty
                     </Link>
                     <Link
-                        to="/courses"
+                        to="/dashboard/courses"
                         className="block px-6 py-3 text-black hover:bg-gray-100 border-l-4 border-transparent hover:border-black transition-all"
                     >
                         Courses
                     </Link>
                     <Link
-                        to="/schedule"
-                        className="block px-6 py-3 text-black hover:bg-gray-100 border-l-4 border-transparent hover:border-black transition-all"
-                    >
-                        Schedule
-                    </Link>
-                    <Link
-                        to="/gallery"
+                        to="/dashboard/gallery"
                         className="block px-6 py-3 text-black hover:bg-gray-100 border-l-4 border-transparent hover:border-black transition-all"
                     >
                         Gallery
                     </Link>
                     <Link
-                        to="/students"
+                        to="/dashboard/students"
                         className="block px-6 py-3 text-black hover:bg-gray-100 border-l-4 border-transparent hover:border-black transition-all"
                     >
                         Students
                     </Link>
                     <Link
-                        to="/announcements"
+                        to="/dashboard/announcements"
                         className="block px-6 py-3 text-black hover:bg-gray-100 border-l-4 border-transparent hover:border-black transition-all"
                     >
                         Announcements
                     </Link>
                     <Link
-                        to="/marks"
+                        to="/dashboard/marks"
                         className="block px-6 py-3 text-black hover:bg-gray-100 border-l-4 border-transparent hover:border-black transition-all"
                     >
                         Marks
                     </Link>
                     <Link
-                        to="/attendance"
+                        to="/dashboard/attendance"
                         className="block px-6 py-3 text-black hover:bg-gray-100 border-l-4 border-transparent hover:border-black transition-all"
                     >
                         Attendance
