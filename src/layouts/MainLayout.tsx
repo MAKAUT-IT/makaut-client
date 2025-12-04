@@ -70,6 +70,18 @@ export default function MainLayout() {
                     >
                         Announcements
                     </Link>
+                    <Link
+                        to="/marks"
+                        className="block px-6 py-3 text-black hover:bg-gray-100 border-l-4 border-transparent hover:border-black transition-all"
+                    >
+                        Marks
+                    </Link>
+                    <Link
+                        to="/attendance"
+                        className="block px-6 py-3 text-black hover:bg-gray-100 border-l-4 border-transparent hover:border-black transition-all"
+                    >
+                        Attendance
+                    </Link>
                 </nav>
             </aside>
 

@@ -50,7 +50,7 @@ export default function AnnouncementPage() {
     const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const isAdmin = user?.role === 'ADMIN' || user?.role === 'admin';
+    const isAdmin = user?.role === 'ADMIN';
 
     useEffect(() => {
         fetchAnnouncements();
