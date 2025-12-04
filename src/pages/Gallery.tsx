@@ -1,5 +1,5 @@
 // src/pages/Gallery.tsx
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 type Album = {
   id: string;
