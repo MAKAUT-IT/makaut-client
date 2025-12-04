@@ -13,6 +13,7 @@ import AttendancePage from './pages/AttendancePage';
 import MainLayout from './layouts/MainLayout';
 import { useAuthStore } from './store/authStore';
 import { Loader2 } from 'lucide-react';
+import FacultyListPage from './pages/FacultyListPage';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, isLoading } = useAuthStore();
@@ -66,6 +67,7 @@ function App() {
           <Route path="courses" element={<CoursesPage />} />
           <Route path="marks" element={<MarksPage />} />
           <Route path="attendance" element={<AttendancePage />} />
+          <Route path="faculty" element={<FacultyListPage />} />
         </Route>
       </Routes>
     </Router>

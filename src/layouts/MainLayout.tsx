@@ -41,6 +41,12 @@ export default function MainLayout() {
                         Notices
                     </Link>
                     <Link
+                        to="/faculty"
+                        className="block px-6 py-3 text-black hover:bg-gray-100 border-l-4 border-transparent hover:border-black transition-all"
+                    >
+                        Faculty
+                    </Link>
+                    <Link
                         to="/courses"
                         className="block px-6 py-3 text-black hover:bg-gray-100 border-l-4 border-transparent hover:border-black transition-all"
                     >
